@@ -247,6 +247,14 @@ describe('mpack', function()
       assert.are_same({1, 2}, t2:get_c())
     end)
 
+    it('errors when the table has no handler', function()
+      local packer = mpack.Packer({ext = {}})
+      local t1 = Type.new('field a', 2, {1, 2})
+      assert.has_error(function()
+        packer({key = {3, t1}})
+      end, "can't serialize object")
+    end)
+
     it('errors on recursive packing or unpacking', function()
       local unpack, pack
       local ext_unpackers = {
