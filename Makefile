@@ -29,7 +29,7 @@ MPACK ?= mpack.so
 endif
 
 # Compilation
-CC ?= gcc
+CC = $(CXX)
 PKG_CONFIG ?= pkg-config
 CFLAGS ?= -ansi -O0 -g3 -Wall -Wextra -Werror -Wconversion \
 	-Wstrict-prototypes -Wno-unused-parameter -pedantic
